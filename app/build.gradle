@@ -1,0 +1,91 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    namespace 'com.demox.sbrcurrency'
+    compileSdk = Config.compileSdk
+
+    defaultConfig {
+        applicationId "com.tsrttur.testapp"
+        minSdk  = Config.minSdk
+        targetSdk  = Config.targetSdkVersion
+        versionCode  = Config.versionCode
+        versionName  = Config.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerVersion = "1.6.10"
+        kotlinCompilerExtensionVersion = Versions.compose
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+
+dependencies {
+
+   implementation( project(path:':data:currency'))
+    implementation( project(path:':data:user-settings'))
+   implementation( project(path:':domain:currency'))
+  implementation( project(path:':domain:user-settings'))
+    implementation( project(path:':presentation:base-ui'))
+    implementation( project(path:':presentation:currency'))
+    implementation( project(path:':presentation:user-settings'))
+
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation "androidx.compose.ui:ui:${Versions.compose}"
+    implementation "androidx.compose.material:material:${Versions.compose}"
+    implementation "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
+    implementation 'androidx.activity:activity-compose:1.3.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
+    debugImplementation "androidx.compose.ui:ui-tooling:${Versions.compose}"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
+
+    implementation(Navigation.composeNavigation)
+    implementation(Navigation.hiltNavigation)
+    implementation(AndroidX.composeConstraint)
+
+    implementation(Network.loggingInterceptor)
+//    implementation(Network.retrofit)
+//    implementation(Network.retrofitConvertor)
+//    api('com.squareup.retrofit:converter-simplexml:2.4.0')
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-simplexml:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    implementation 'com.google.dagger:hilt-android:2.42'
+    kapt 'com.google.dagger:hilt-compiler:2.42'
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+}
