@@ -9,6 +9,7 @@ object Modules {
     object Data {
         const val CURRENCY = ":data:currency"
         const val SETTINGS = ":data:user-settings"
+        const val SHARED = ":data:shared-pref"
     }
 
     object Domain {

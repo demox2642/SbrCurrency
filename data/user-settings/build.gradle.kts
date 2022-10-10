@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -34,5 +35,8 @@ android {
 }
 
 dependencies {
+    dataImplementation()
+    api(project(Modules.Data.SHARED))
     api(project(Modules.Domain.SETTINGS))
+
 }

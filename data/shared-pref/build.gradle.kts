@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.demox.currency"
+    namespace = "com.demox.shared_pref"
     compileSdk = Config.compileSdk
 
     defaultConfig {
@@ -33,12 +33,7 @@ android {
         jvmTarget = "1.8"
     }
 }
-
 dependencies {
-    api(project(Modules.Domain.CURRENCY))
-    api(project(Modules.Data.SHARED))
-    implementation(Network.simplexml)
+    implementation(Network.retrofitConvertor)
     dataImplementation()
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 }

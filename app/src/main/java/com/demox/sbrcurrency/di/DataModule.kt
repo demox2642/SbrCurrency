@@ -1,20 +1,24 @@
 package com.demox.sbrcurrency.di
 
+import android.content.Context
 import com.demox.currency.repository.CurrencyRepository
 import com.demox.currency.repository.CurrencyRepositoryImpl
 import com.demox.currency.services.CurrencyService
+import com.demox.shared_pref.storage.SharedPrefUserStorage
+import com.demox.shared_pref.storage.UserStorage
+import com.demox.user_settings.repository.SettingsRepository
+import com.demox.user_settings.repository.UserSettingRepositoryImpl
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 import javax.inject.Singleton
-
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -22,8 +26,20 @@ class DataModule {
 
     @Singleton
     @Provides
-    fun provideCurrencyRepository(currencyService: CurrencyService): CurrencyRepository {
-        return CurrencyRepositoryImpl(currencyService = currencyService)
+    fun provideCurrencyRepository(currencyService: CurrencyService, userStorage: UserStorage): CurrencyRepository {
+        return CurrencyRepositoryImpl(currencyService = currencyService, userStorage = userStorage)
+    }
+
+    @Singleton
+    @Provides
+    fun provideUserSettingRepository(userStorage: UserStorage): SettingsRepository {
+        return UserSettingRepositoryImpl(userStorage = userStorage)
+    }
+
+    @Singleton
+    @Provides
+    fun provideUserStorage(@ApplicationContext context: Context): UserStorage {
+        return SharedPrefUserStorage(context = context)
     }
 
     @Provides
@@ -48,7 +64,7 @@ class DataModule {
         return Retrofit.Builder()
             .client(client)
             .baseUrl("https://cbr.ru/scripts/")
-           .addConverterFactory(SimpleXmlConverterFactory.create())
+            .addConverterFactory(SimpleXmlConverterFactory.create())
     }
 
     @Singleton

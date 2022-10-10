@@ -46,7 +46,7 @@ object Navigation {
 object Network {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofitVersion}"
      const val simplexml = "com.squareup.retrofit2:converter-simplexml:2.5.0"
-    const val retrofitConvertor = "com.squareup.retrofit2:converter-gson:${Versions.retrofitConvVersion}"
+    const val retrofitConvertor = "com.squareup.retrofit2:converter-gson:${Versions.retrofitVersion}"
     const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.retrofitLoggerVersion}"
     const val kotlinSerializationJson = "org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0"
     fun getAll() = Network::class.memberProperties

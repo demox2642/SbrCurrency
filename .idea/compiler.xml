@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="SbrCurrency.data.settings" target="11" />
+      <module name="SbrCurrency.data.user-data" target="11" />
       <module name="SbrCurrency.presentation.settings" target="11" />
     </bytecodeTargetLevel>
   </component>
