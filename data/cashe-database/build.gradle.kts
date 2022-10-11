@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.demox.currency"
+    namespace = "com.demox.cashe_database"
     compileSdk = Config.compileSdk
 
     defaultConfig {
@@ -35,15 +35,9 @@ android {
 }
 
 dependencies {
-    api(project(Modules.Domain.CURRENCY))
-    api(project(Modules.Data.SHARED))
-    api(project(Modules.Data.CASHE))
-    implementation(Room.room)
-    implementation(Room.roomKTX)
-    implementation(Room.roomPaging)
-    kapt(Room.roomCompiler)
-    implementation(Network.simplexml)
-    dataImplementation()
+    databaseImplementation()
+
+    testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 }

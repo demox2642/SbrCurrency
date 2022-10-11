@@ -60,6 +60,7 @@ dependencies {
     implementation( project(path:':presentation:currency'))
     implementation( project(path:':presentation:user-settings'))
     implementation(project(path:':data:shared-pref'))
+    implementation(project(path:'::data:cashe-database'))
 
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation "androidx.compose.ui:ui:${Versions.compose}"
@@ -79,9 +80,10 @@ dependencies {
     implementation(AndroidX.composeConstraint)
 
     implementation(Network.loggingInterceptor)
-//    implementation(Network.retrofit)
-//    implementation(Network.retrofitConvertor)
-//    api('com.squareup.retrofit:converter-simplexml:2.4.0')
+    implementation(Room.room)
+    implementation(Room.roomKTX)
+    implementation(Room.roomPaging)
+    kapt(Room.roomCompiler)
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-simplexml:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'

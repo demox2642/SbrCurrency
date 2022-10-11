@@ -22,7 +22,8 @@ fun DependencyHandler.domainNetworkImplentation() {
     Network.getAll().forEach { implementation(it) }
 }
 fun DependencyHandler.databaseImplementation() {
-    implementation(Coil.coil)
+    implementation(Di.hilt)
+    kapt(Di.hiltCompiler)
     implementation(Room.room)
     implementation(Room.roomKTX)
     implementation(Room.roomPaging)
@@ -32,7 +33,7 @@ fun DependencyHandler.databaseImplementation() {
 }
 
 fun DependencyHandler.dataImplementation() {
-    //implementation(project(Modules.Data.DATABASE))
+
     Network.getAll().forEach { implementation(it) }
     implementation(AndroidX.pagingCompose)
     implementation(Di.hilt)

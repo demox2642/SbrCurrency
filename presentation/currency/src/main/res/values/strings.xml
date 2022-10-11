@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="top_bar">Курс валют (USD)</string>
+    <string name="setting">настройки</string>
+    <string name="currency_logo">изображение вылюты</string>
+</resources>

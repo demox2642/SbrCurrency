@@ -1,6 +1,7 @@
 package com.demox.sbrcurrency.di
 
 import android.content.Context
+import com.demox.cashe_database.CacheDatabase
 import com.demox.currency.repository.CurrencyRepository
 import com.demox.currency.repository.CurrencyRepositoryImpl
 import com.demox.currency.services.CurrencyService
@@ -26,8 +27,8 @@ class DataModule {
 
     @Singleton
     @Provides
-    fun provideCurrencyRepository(currencyService: CurrencyService, userStorage: UserStorage): CurrencyRepository {
-        return CurrencyRepositoryImpl(currencyService = currencyService, userStorage = userStorage)
+    fun provideCurrencyRepository(currencyService: CurrencyService, userStorage: UserStorage, cacheDatabase: CacheDatabase): CurrencyRepository {
+        return CurrencyRepositoryImpl(currencyService = currencyService, userStorage = userStorage, cacheDatabase = cacheDatabase)
     }
 
     @Singleton
@@ -63,7 +64,7 @@ class DataModule {
 
         return Retrofit.Builder()
             .client(client)
-            .baseUrl("https://cbr.ru/scripts/")
+            .baseUrl(Constants.urlBase)
             .addConverterFactory(SimpleXmlConverterFactory.create())
     }
 

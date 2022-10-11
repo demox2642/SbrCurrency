@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="title" translatable="false">User Settings</string>
+    <string name="currency_observer" tools:ignore="ExtraTranslation">Currency observer</string>
+    <string name="enter_message" tools:ignore="ExtraTranslation">Please enter double value: </string>
+    <string name="save" tools:ignore="ExtraTranslation">Save</string>
+    <string name="setting_allert_title" tools:ignore="ExtraTranslation">Warning!</string>
+    <string name="setting_allert" tools:ignore="ExtraTranslation">Settings not saved. Changes will be lost!</string>
+    <string name="confirm" tools:ignore="ExtraTranslation">Confirm</string>
+    <string name="esc" tools:ignore="ExtraTranslation" >Esc</string>
+
+</resources>

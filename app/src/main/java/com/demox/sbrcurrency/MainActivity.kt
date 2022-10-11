@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
 
                 AppTheme.AppTheme(colors = colors) {
                     SystemUi(windows = window)
-                    Surface(color = MaterialTheme.colors.background) {
+                    Surface() {
                         MainContent()
 
                         SnackbarHost(
